@@ -1,0 +1,33 @@
+name: Rust Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        target:
+          [x86_64-unknown-linux-gnu, x86_64-pc-windows-gnu, x86_64-apple-darwin]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Rust
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+          target: ${{ matrix.target }}
+
+      - name: Build
+        run: cargo build --target ${{ matrix.target }} --release
+
+      - name: Upload Release Binaries
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.target }}-binary
+          path: target/${{ matrix.target }}/release/ImageManager
