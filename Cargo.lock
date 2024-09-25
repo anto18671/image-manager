@@ -3,6 +3,18 @@
 version = 3
 
 [[package]]
+name = "ImageManager"
+version = "0.1.0"
+dependencies = [
+ "eframe",
+ "epaint",
+ "image",
+ "rfd",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "ab_glyph"
 version = "0.2.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3165,18 +3177,6 @@ checksum = "9f7916fc008ca5542385b89a3d3ce689953c143e9304a9bf8beec1de48994c0d"
 dependencies = [
  "libc",
  "winapi",
-]
-
-[[package]]
-name = "sort-app"
-version = "0.1.0"
-dependencies = [
- "eframe",
- "epaint",
- "image",
- "rfd",
- "serde",
- "serde_json",
 ]
 
 [[package]]
